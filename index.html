@@ -264,6 +264,37 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
+        .versions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: stretch;
+        }
+        .version-card {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(145deg, rgba(30, 41, 59, .96), rgba(15, 23, 42, .98));
+            border: 1px solid rgba(56, 189, 248, .28);
+            border-radius: 18px;
+            padding: 1.7rem;
+            box-shadow: 0 10px 28px rgba(0,0,0,.22);
+        }
+        .version-card.pro { border-color: rgba(16,185,129,.65); }
+        .version-card h3 { color: #38bdf8; margin-bottom: .6rem; font-size: 1.35rem; }
+        .version-card.pro h3 { color: #34d399; }
+        .version-platform { color: #94a3b8; font-weight: 600; margin-bottom: 1rem; }
+        .version-card p { margin-bottom: .9rem; }
+        .version-card ul { padding-left: 1.2rem; margin: .4rem 0 1.2rem; }
+        .version-card li { margin: .45rem 0; }
+        .version-card .btn-download { margin-top: auto; text-align: center; width: 100%; box-sizing: border-box; }
+        .version-note {
+            margin-top: 1.5rem; padding: 1.1rem 1.2rem;
+            background: rgba(245, 158, 11, .10);
+            border-left: 4px solid #f59e0b; border-radius: 8px;
+        }
+        .version-note strong { color: #fbbf24; }
+
         .version-info {
             display: flex;
             justify-content: center;
@@ -625,18 +656,85 @@
         </section>
 
         <section id="download" class="download">
-            <h2 data-key="download-title">📥 Téléchargement</h2>
-            <div class="download-card">
-                <div class="version-info">
-                    <span class="version-badge">Version 1.0.0 Stable</span>
-                    <span class="date-badge">31/05/2026</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="https://github.com/irntex12/IIB-Manager/releases/download/v1.0.1/IIB_Manager_Setup.zip" class="btn btn-download">
-                         IIB_Manager_Setup.zip (90.0 MB)
+            <h2 data-key="download-title">📥 Télécharger IIBManager</h2>
+            <p style="text-align:center; max-width:850px; margin:0 auto 1.5rem;">
+                Choisissez la version adaptée à votre appareil. IIBManager existe en édition Pro pour Windows,
+                ainsi qu'en éditions Lite pour Windows et Android.
+            </p>
+
+            <div class="versions-grid">
+                <article class="version-card pro">
+                    <div class="version-info"><span class="version-badge">ÉDITION PRO</span></div>
+                    <h3>IIBManager Pro — PC</h3>
+                    <p class="version-platform">Windows 10 / Windows 11</p>
+                    <p>
+                        La version complète, avec une interface plus professionnelle et une expérience
+                        pensée pour une utilisation avancée.
+                    </p>
+                    <ul>
+                        <li>Interface professionnelle et plus aboutie</li>
+                        <li>Fonctionnalités complètes de la version PC</li>
+                        <li>Téléchargement de vidéos et de fichiers pris en charge par le logiciel</li>
+                    </ul>
+                    <a href="https://github.com/irntex12/IIB-Manager/releases/download/pro_v1.0.1/IIB_Manager_Setup.zip"
+                       class="btn btn-download" target="_blank" rel="noopener noreferrer">
+                        ⬇ Télécharger IIBManager Pro (PC)
                     </a>
-                </div>
+                </article>
+
+                <article class="version-card">
+                    <div class="version-info"><span class="version-badge">ÉDITION LITE</span></div>
+                    <h3>IIBManager Lite — PC</h3>
+                    <p class="version-platform">Windows — archive ZIP</p>
+                    <p>
+                        Une édition légère dont les fonctionnalités sont globalement proches de celles de Pro.
+                        La principale différence est son interface, volontairement plus simple et moins travaillée
+                        que l'interface professionnelle de la version Pro.
+                    </p>
+                    <ul>
+                        <li>Fonctionnalités proches de l'édition Pro</li>
+                        <li>Interface simplifiée</li>
+                        <li>Distribution au format ZIP</li>
+                    </ul>
+                    <a href="https://github.com/irntex12/IIB-Manager/releases/download/windows_zip_v1.0.1/Iri.Internet.BM-1.0.1.zip"
+                       class="btn btn-download" target="_blank" rel="noopener noreferrer">
+                        ⬇ Télécharger IIBManager Lite (PC)
+                    </a>
+                </article>
+
+                <article class="version-card">
+                    <div class="version-info"><span class="version-badge">ÉDITION LITE</span></div>
+                    <h3>IIBManager Lite — Android</h3>
+                    <p class="version-platform">Téléphone et tablette Android — APK</p>
+                    <p>
+                        Une version mobile simplifiée, destinée principalement au téléchargement de vidéos
+                        depuis YouTube et Facebook.
+                    </p>
+                    <ul>
+                        <li>Téléchargement de vidéos YouTube</li>
+                        <li>Téléchargement de vidéos Facebook</li>
+                        <li>Interface Lite adaptée à Android</li>
+                    </ul>
+                    <a href="https://github.com/irntex12/IIB-Manager/releases/download/v1.0.1/Iri.Internet.BM-1.0.1.apk"
+                       class="btn btn-download" target="_blank" rel="noopener noreferrer">
+                        ⬇ Télécharger l'APK Lite (Android)
+                    </a>
+                </article>
             </div>
+
+            <div class="version-note">
+                <strong>⚠️ Limitation de la version Android Lite :</strong>
+                cette édition n'est pas encore aussi complète que la version Pro. La dépendance
+                <code>curl_cffi</code> (version 2.1), nécessaire à certaines fonctions d'impersonation,
+                n'est pas intégrée actuellement. En conséquence, le téléchargement vidéo est limité
+                à YouTube et Facebook. Certaines plateformes et fonctions disponibles sur PC ne sont
+                donc pas prises en charge sur cette version Android.
+            </div>
+
+            <p style="text-align:center; margin-top:1.5rem; color:#94a3b8;">
+                Conseil : pour profiter de l'expérience la plus complète sur ordinateur, choisissez
+                <strong style="color:#34d399;">IIBManager Pro</strong>.
+            </p>
         </section>
 
         <section id="screenshots" class="screenshots">
